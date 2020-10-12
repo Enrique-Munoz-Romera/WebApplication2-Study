@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ISBN OK</title>
+    <script type="text/javascript">
+        function comprobarIsbn() {
+        //recogemos la caja isbn
+        var cajaisbn = document.getElementById("isbn").value;
+        var suma = 0;
+            //recorremos todos los caracteres de la cadena ISBN
+            for (var i = 0; i < cajaisbn.lengnth; i++) {
+                console.log("caracteres de ISBN" + i);
+                //capturamos cada caracter como un número por su posición
+                var numero = parseInt(cajaisbn.charAt(i));
+                var multi = numero * (i + 1);
+                suma += multi;
+            }
+            //recogemos la caja resultado para poder mostrarlo
+            var result = document.getElementById("result");
+            if (suma % 11 == 0) {
+                console.log("aqui conseguimos el resto" + suma);
+                result.innerText = "ISBN correcto " + cajaisbn;
+            } else {
+                result.innerText = "ISBN incorrecto " + cajaisbn;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <!--EJEMPLO DE NUMERO ISBN QUE ESTÁ BIEN:
+
+        8441513929
+
+        1.- Se descompone la cadena y se multiplica cada número
+        por la posición que ocupa en la cadena:
+        8 * 1
+        4 * 2
+        4 * 3
+        1 * 4
+        5 * 5
+        .
+        .
+        .
+        9 * 10
+
+
+        2.- La suma de todas estas multiplicaciones se
+        divide entre 11, y si el resto es cero, el número ISBN es correcto.-->
+        <h1>Validación de un ISBN</h1>
+        <label style="color:blue">Introduzca su ISBN : </label>
+        <input type="number" id="isbn" /><br />
+        <button type="button" onclick="comprobarIsbn()">
+            validar ISBN
+        </button>
+        <div id="result" style="color:darkcyan"></div>
+    </div>
+</body>
+</html>

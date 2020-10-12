@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Collatz</title>
+    <script type="text/javascript">
+        function conjeturaCollatz() {
+            //capturamos las cajas necesarias
+            var collatz = document.getElementById("collatz");
+            var div = document.getElementById("result");
+            //recogemos el valor de las cajas
+            var num = parseInt(collatz.value);
+            div.innerHTML = "";
+            if (num < 0) {
+                div.innerHTML = "<p>Introduce un valor correcto</p>";
+                console.log("valor positivo[si/no]");
+            } else {
+                div.innerHTML += "<p>" + num + "</p>";
+                console.log("es positivo " + num);
+                while (num != 1) {
+                    console.log("dentroWhile: " + num);
+                    //Si el número es PAR: Dividimos el número entre 2
+                    //Si el número es IMPAR: Multiplicamos el número por 3 y le sumamos 1
+                    if (num % 2 == 0) {
+                        num = num / 2;
+                        console.log("es par" + num );
+                    } else {
+                        num = num * 3 + 1;
+                        console.log("es impar" + num)
+                    }
+                    div.innerHTML += "<p>" + num + "</p>";
+                }
+            }
+           
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <!--Regla matemática que dice lo siguiente:
+        Todo número natural (positivo) siempre será 1 siguiendo una serie de instrucciones:
+        Si el número es PAR: Dividimos el número entre 2
+        Si el número es IMPAR: Multiplicamos el número por 3 y le sumamos 1-->
+        <h1>Conjetura Collatz</h1>
+        <label>Introduce un número: </label>
+        <input type="number" id="collatz" />
+        <button type="button" onclick="conjeturaCollatz()">
+            Ejecutar Collatz
+        </button>
+        <div id="result"></div>
+    </div>
+</body>
+</html>

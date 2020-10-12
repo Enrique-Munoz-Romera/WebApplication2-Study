@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Forms Control</title>
+    <script type="text/javascript">
+        function mostrarSeleccionado() {
+            console.log("entramos en la function");
+            //capturamos el objt  <select>
+            var select = document.getElementById("deportes");
+            var result = document.getElementById("result");
+            //document.images[]
+            //document.DATALIST.options[]
+            //Dos formas de acceso a los objetos
+            //DOM: Ruta donde se encuentran los elementos HTML
+            //  window.document.select
+            //2 forma busqueda mediante metodos
+            //var objeto = document.getDameAlgo("??");
+            //existe un array predeterminado llamado OPTIONS[];
+            for (var opcion of select.options) {
+                console.log("entra en el for");
+                //si son options, para saber su seleccion
+                //es con selected
+                if (opcion.selected == true) {
+                    //solo entra una vez porque no tenemos seleccion multiple
+                    //en cliente (JS) podemos acceder tanto a texto visible (innerText) o al valor (value)
+                    result.innerText = "Valor: " + opcion.value + "texto: " + opcion.innerText;
+                    console.log("entra en el if");
+                }
+            }
+        }
+
+        function colorSeleccionado() {
+            //cuando ponemos el mismo name a controles
+            //form, se genera un array en el DOM dinamico
+            //con el name
+            //var colores = document.getElementsByName("colores");
+            //var colores = document.forms[0].colores;
+            var colores = document.formulario.colores;
+            var html = "";
+            var form = document.colores;
+            console.log(colores.length);
+            //recorremos el array de input checkbox
+            for (var chk of colores) {
+                //un input checkbox/radio utiliza checked
+                //paraa su seleccion
+                if (chk.checked == true) {
+                    html += chk.value + ",";
+                }
+                var result = document.getElementById("result");
+                result.innerText = html;
+                console.log(colores.lenght);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <form name="formulario">
+            <h1>Ejemplos de Controles de Forms</h1>
+            <label>Selecciona tus colores: </label>
+            <ul>
+                <li>
+                    <input type="checkbox" value="verde"  name="colores"/>verde
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <input type="checkbox" value="rosa" name="colores" />rosa
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <input type="checkbox" value="rojo"  name="colores"/>rojo
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <input type="checkbox" value="azul"  name="colores"/>azul
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <input type="checkbox" value="morado"  name="colores"/>morado
+                </li>
+            </ul>
+
+        </form>
+
+        <button type="button" onclick="colorSeleccionado()">
+            Mostrar colores
+        </button>
+
+        <form name="formulario2">
+            <label>Elige tú deporte favorito: </label>
+            <select id="deportes">
+                <option value="mma">MMA</option>
+                <option value="futbol">Futbol</option>
+                <option value="basket">Basket</option>
+                <option value="padel">Padel</option>
+            </select>
+            <select id="deportes2">
+                <option value="judo">Judo</option>
+            </select>
+            <button type="button" onclick="mostrarSeleccionado()">
+                Mostrar deporte seleccionado
+            </button>
+            <div id="result" style="color:darkblue"></div>
+        </form>
+    </div>
+</body>
+</html>

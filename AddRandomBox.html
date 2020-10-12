@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AddRandomBox</title>
+    <script>
+        window.onload = function () {
+            var cajas = document.getElementsByName("caja");
+            var posicion = 1;
+            //le otorgamos un valor aleatorio
+            for (var caja of cajas) {
+                var aleat = parseInt((Math.random() * 50) + 1);
+                caja.value = aleat;
+                //preguntamos por la posicion de la caja en el recorrido
+                if (posicion % 2 == 0) {
+                    caja.className = "par";
+                } else {
+                    caja.className = "impar";
+                }
+                posicion += 1;
+            }
+
+            var boton = document.getElementById("sumar");
+            boton.addEventListener("click", function () {
+                //necesitamos saber que opcion esta seleccionada
+                var opciones = document.formulario.seleccion;
+                var seleccion = "";
+                for (var opt of opciones) {
+                    if (opt.checked == true) {
+                        seleccion = opt.value;
+                        console.log("seleccion: " + seleccion);
+                    }
+                }
+                console.log("seleccion");
+
+                var cajas = document.getElementsByClassName(seleccion);
+                var suma = 0;
+                for (var caja of cajas) {
+                    //necesitamos extraer el valor numerico de las cajas
+                    var num = parseInt(caja.value);
+                    suma += num;
+                }
+                console.log("resultado final" + suma);
+                document.getElementById("resultado").innerText = suma;
+            });
+
+        }
+
+    </script>
+    <style>
+        .impar {
+            background-color: fuchsia;
+        }
+
+        .par {
+            background-color: yellow;
+        }
+
+        /*input[type=number]:nth-of-type(odd) {
+            background-color: fuchsia;
+        }
+
+        input[type=number]:nth-of-type(even) {
+            background-color: yellow;
+        }*/
+    </style>
+
+</head>
+<body>
+    <div>
+        <form name="formulario">
+            <fieldset>
+                <legend>Práctica de clase</legend>
+                <h1><b>Sumar cajas random</b></h1>
+                <input type="radio" name="seleccion" value="par" />Even
+                <input type="radio" name="seleccion" value="impar" />Odd
+                <br />
+                <input type="number" name="caja" /><br />
+                <input type="number" name="caja" /><br />
+                <input type="number" name="caja" /><br />
+                <input type="number" name="caja" /><br />
+                <button type="button" id="sumar">Sumar</button>
+                <div id="resultado"></div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

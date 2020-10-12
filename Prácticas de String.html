@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Prácticas de String</title>
+    <script type="text/javascript">
+        function sumarNumeros() {
+            //recogemos las cajas
+            var texto = document.getElementById("cajanumeros").value;
+            var suma = 0;
+            console.log("comprobacion de que entra en la function");
+            //RECORREMOS TODOS LOS CARACTERES DEL TEXTO
+            for(var i = 0; i < texto.lenght; i++) {
+                 //CAPTURAMOS CADA LETRA DEL TEXTO POR POSICION
+                //Y CONVERTIMOS PORQUE SON NUMEROS
+                var numeros = parseInt(texto.charAt(i));
+                suma += numeros;
+                console.log(" bucle for" + i);
+            }
+            var result = document.getElementById("result");
+            var media = suma / texto.lenght;
+            result.innerText = "Suma: " + suma + "Media: " + media;
+            console.log("fin");
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Prácticas de String</h1>
+        <label>Sumar números</label>
+        <input type="number" id="cajanumeros" />
+        <button type="button" onclick="sumarNumeros()">
+            Sumar Numeros
+        </button>
+        <div style="color:blue" id="result"></div>
+    </div>
+</body>
+</html>

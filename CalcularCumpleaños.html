@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>CalcularCumpleaños</title>
+        <script type="text/javascript">
+            function calcularDia() {
+                //capturar las cajas (crear las cajas)
+                var day = document.getElementById("day");
+                var month = document.getElementById("month");
+                var year = document.getElementById("year");
+                //Recogemos el valor de las cajas
+                var dayValue = parseInt(day.value);
+                var monthValue = parseInt(month.value);
+                var yearValue = parseInt(year.value);
+                //Comprobamos si el mes es enero o febrero
+                if (monthValue == 1) {
+                    monthValue = 13;
+                    //maneras de restar 1 a una variable
+                    yearValue = yearValue - 1;
+                    //yearValue -= 1;
+                    //yearValue--;
+                } else if (monthValue == 2) {
+                    monthValue = 14;
+                    yearValue--;
+                }
+                //Necesitamos saber si redondea o trunca
+                //Math.trunc()
+                var op1 = parseInt(((monthValue + 1) * 3) / 5);
+                console.log("operación1 : " + op1);
+                var op2 = parseInt(yearValue / 4);
+                console.log("operación2 : " + op2);
+                var op3 = parseInt(yearValue / 100);
+                console.log("operación3 : " + op3);
+                var op4 = parseInt(yearValue / 400);
+                console.log("operación4 : " + op4);
+                  //Sumar el dia, el doble del mes, el año, el resultado de la operación 1,
+                 //el resultado de la operación 2,
+                //menos el resultado de la operación 3 más la operación 4 más 2.
+                var op5 = parseInt(dayValue + (monthValue * 2) + yearValue +
+                    op1 + op2 - op3 + op4 + 2);
+                console.log("operación5 = " + op5);
+                var op6 = parseInt(op5 / 7);
+                console.log("operacion6 : " + op6);
+                var result = parseInt(op5 - (op6 * 7));
+                console.log("resultado = " + result);
+                //Recuperamos el div
+                var solution = document.getElementById("result");
+                switch (result) {
+                    case 0:
+                        solution.innerText = "sabado";
+                        break;
+                    case 1:
+                        solution.innerText = "domingo";
+                        break;
+                    case 2:
+                        solution.innerText = "lunes";
+                        break;
+                    case 3:
+                        solution.innerText = "martes";
+                        break;
+                    case 4:
+                        solution.innerText = "miercoles";
+                        break;
+                    case 5:
+                        solution.innerText = "jueves";
+                        break;
+                    case 6:
+                        solution.innerText = "viernes";
+                        break;
+                    default:
+                        solution.innerText = "introduce un valor valido";
+                        break;
+
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <label>Día</label>
+            <input type="text" id="day" /><br />
+            <label>Mes</label>
+            <input type="text" id="month" /><br />
+            <label>Año</label>
+            <input type="text" id="year" /><br />
+            <button type="button" onclick="calcularDia()">Click me</button>
+            <div id="result"></div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        img{
+            width:80px;
+            height:80px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            //buscamos las imgs
+            //existe un array predefinido en el dom con tods las <img>
+            var imgs = document.images;
+            //recorremos todo el array
+            for (var img of imgs) {
+                //cada imagen debemos enlazar un event distinto
+                img.addEventListener("mouseover", function () {
+                    // cuando pasemos por encima,cambia imagen
+                    //esto es el click 
+                    this.src = "images/S2.jpg";
+                });
+                img.onmouseout = function () {
+                //    cuando salgamos del area, ponemos otra img
+                   this.src = "images/640px-Spiderman.jpg";
+                }
+            }
+
+        }
+
+        function realizarAccacion1() {
+            var imagenes = document.getElementsByName("img");
+            for (var i = 0; i < imagenes; i++) {
+                var IMAGEN = imagenes[i];
+            }
+
+            function realizarAccion2() {
+                IMAGEN.src = "images/S2.jpg";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Clase Online</h1>
+        <!--PRACTICA CAMBIAR IMÁGENES
+
+        Tendremos varias imágenes en HTML.
+        Mediante métodos delegados, haremos que las imágenes cambien
+        Cuando entremos con el ratón o salgamos.
+        QUEREMOS QUE EL CODIGO NOS FUNCIONE IGUAL TANTO SI TENEMOS
+        UNA IMAGEN COMO SI TENEMOS 30.-->
+        <h1>Camabiar imgs con EventListener</h1>
+        <h1>Cambiar imagenes</h1>
+        <img src="images/S2.jpg" />
+        <img src="images/640px-Spiderman.jpg" />
+        <img src="images/S2.jpg" />
+        <img src="images/640px-Spiderman.jpg" />
+
+
+    </div>
+</body>
+</html>

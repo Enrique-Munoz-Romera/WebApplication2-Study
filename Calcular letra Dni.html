@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Calcular letra DNI</title>
+    <script type="text/javascript">
+        function calcularLetra() {
+            console.log("entra en la function");
+            //recogemos las cajas necesarias
+            var contenidodni = "TRWAGMYFPDXBNJZSQVHLCKET";
+            var dni = parseInt(document.getElementById("dni").value);
+            var result = document.getElementById("result");
+            //(nº DNI - (ENTERO(nº DNI / 23) * 23))
+            var valor = (dni - (Math.trunc(dni / 23) * 23));
+            console.log("Math.trunc" + valor);
+            // //var letra = contenidodni.substr(valor, 1);
+            var letra = contenidodni.charAt(valor);
+            console.log("what the fuck!!!" + letra);
+            console.log("letra" + letra);
+            result.innerText = "La letra de tu dni es: " + letra;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Calcular letra DNi</h1>
+        <label>Introduce tu número del DNI: </label>
+        <input type="number" id="dni" autofocus required/>
+        <button type="button" onclick="calcularLetra()">
+            Adivina tu letra
+        </button>
+        <div style="color:blue" id="result"></div>
+    </div>
+</body>
+</html>

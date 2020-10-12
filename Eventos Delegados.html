@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Eventos Delegados</title>
+    <script type="text/javascript">
+             //VAMOS A CREAR UNA VARIABLE GLOBAL
+            //DONDE INCREMENTAREMOS SU VALOR CADA VEZ
+           //QUE ASOCIEMOS EL EVENTO.
+          //ASI VEREMOS EL NUMERO DE ASOCIACIONES Y EL
+         //NUMERO DE MENSAJES QUE MOSTREMOS.
+        //DIFERENCIAR ONCLICK DEL LISTENER
+        var contador = 0;
+        function asociarEventos() {
+            contador += 1;
+            //recogemos las cajas
+            var result = document.getElementById("result");
+            result.innerText = "eventos asociado" + contador;
+            //buscamos el boton para delegar el evento
+            var boton = document.getElementById("realizaracciones");
+            //empezamos con onclick y funciones externas
+            //no hay pila de llamadas y se queda con la ultima accion
+            boton.onclick = mostrarMensaje;
+            //boton.onclick = mostrarMensaje2;
+            //con onclick nunca mostraria el mensaje 1 dado que no hay pila de llamadas
+            //2º)Ejercicio: que significa this en este mostrar mensaje? en el alert
+            //THIS: Devuelve el boton asociado
+            //3º)Ejercicio: utilizamos onclick con funciones Anonimas
+        }
+
+
+        function mostrarMensaje() {
+            alert("mensaje 1" + this);
+        }
+
+
+        function mostrarMensaje2() { alert("mensaje 2");}
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Eventos Delegados</h1>
+        <h2 style="color:darkblue" id="result"></h2><br/>
+        <button type="button" onclick="asociarEventos()">
+            Asociar Eventos
+        </button>
+        <button type="button" id="realizaracciones">
+            Realizar Acciones
+        </button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>While-For</title>
+    <script type="text/javascript">
+        function ejecutarWhile() {
+            console.log("entro");
+            //capturamos la caja
+            var resultado = document.getElementById("resultado");
+            resultado.innerHTML = "";
+            var contador = 1;
+            while (contador <= 20) {
+                console.log("saber por donde vas" + contador);
+                //preguntamos si el contador es par
+                if (contador % 2 == 0) {
+                    resultado.innerHTML += contador + ",";
+                    console.log("saber si es par")
+                }
+                contador += 1; //contador++, contador = contador + 1;(distintas maneras de sumar 1)
+            }
+        }
+
+        function ejecutarFor() {
+            //capturamos la caja
+            var resultado = document.getElementById("resultado");
+            resultado.innerHTML = "";
+            for (var i = 1; i <= 50; i++) {
+                if (i % 2 == 1) {
+                    resultado.innerHTML += i + ",";
+                    console.log("saber si es impar");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <!--Tenemos dos tipos de bucles:
+    Condicional:
+    while (condicion) {
+    //DEBEMOS CAMBIAR LA CONDICION PARA SALIR DEL BUCLE
+    }
+
+    Bucle contador:
+
+    for (var i=0; i<=10; i++){
+    //AUTOINCREMENTA
+    }
+
+    for (var i=0; i<=10; i+=5){
+    //AUTOINCREMENTA
+    }-->
+    <div>
+        <h1>SINTAXIS DE BUCLES</h1>
+        <button type="button" onclick="ejecutarWhile()">Ejecutar bucle WHILE</button>
+        <button type="button" onclick="ejecutarFor()">Ejecutar bucle FOR</button>
+        <div id="resultado"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>FormControl</title>
+    <script>
+        window.onload = function () {
+            var form = document.formulario;
+            var button = document.createElement("button");            
+            button.innerText = "display sports";
+            button.className = "buttonclass";
+            button.id = "buttonid";
+            button.type = "button";
+            button.addEventListener("click", function () {
+                var ol = document.getElementById("sports");
+                var chek = document.getElementsByName("martialarts");
+                var result = "";
+                var div = document.getElementById("result");
+                div.innerText = "";
+                for (var seleccion of chek) {
+                    console.log("bucle de referencia: " + seleccion);
+                    if (seleccion.checked == true) {
+                        result += seleccion.value + ", ";
+                        console.log("cheked: " + result);
+                        seleccion.checked = false;
+                    }
+                }
+                div.innerText += result;
+            });
+            form.appendChild(button);
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <form name="formulario">
+            <fieldset>
+                <legend>Arrays in form control</legend>
+                <h1><b>what is your favorite sport?</b></h1>
+                <ol id="sports">
+                    <li>
+                        <input type="checkbox" value="jeetkunedo" name="martialarts"/>Jeet Kune Do
+                    </li>
+                    <li>
+                        <input type="checkbox" value="khali" name="martialarts"/>khali
+                    </li>
+                    <li>
+                        <input type="checkbox" value="satria" name="martialarts"/>satria
+                    </li>
+                    <li>
+                        <input type="checkbox" value="muaythai" name="martialarts"/>muaythai
+                    </li>
+                </ol> 
+                <div id="result"></div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

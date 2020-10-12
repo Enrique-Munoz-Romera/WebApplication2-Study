@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Validar email</title>
+    <script type="text/javascript">
+        function comprobarEmail() {
+            //capturamos las cajas necesarias y le damos el value
+            var cajaEmail = document.getElementById("cajaEmail").value;
+            var result = document.getElementById("result");
+            //existe un @
+            // @ ni al principio ni al final
+            //solamente un @ email.indexOf("@")email.lastIndexOf("@");
+            //Exista un punto
+            //	Un punto después de la @
+            //Dominio de 2 a 4 caracteres
+            if (cajaEmail.indexOf("@") == -1) {
+                result.innerText = "No existe @";
+            } else if (cajaEmail.startsWith("@") || cajaEmail.endsWith("@")) {
+                result.innerText = "@ al principio o al final";
+            } else if (cajaEmail.indexOf("@") != cajaEmail.lastIndexOf("@")) {
+                result.innerText = "Tenemos más de un @";
+            } else if (cajaEmail.indexOf(".") == -1) {
+                result.innerText = "No hay punto";
+            } else if (cajaEmail.lastIndexOf(".") < (cajaEmail.indexOf("@"))) {
+                result.innerText = "No hay punto después de la @";
+            } else {
+                var ultimopunto = cajaEmail.lastIndexOf(".") + 1;
+                var dominio = cajaEmail.substr(ultimopunto);
+                if (dominio.length >= 2 && dominio.length <= 4) {
+                    result.innerText = "Email corrrecto";
+                } else {
+                    result.innerText = "Dominio debe ser de 2 a 4 letras";
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <!--
+        - Comprobar los siguientes elementos:
+        Exista una @
+        @ ni al inicio ni al final
+        Solamente una @
+        Exista un punto
+        Un punto después de la @
+        Dominio de 2 a 4 caracteres
+    -->
+    <div>
+        <h1>Ejemplo String Validar Email</h1>
+        <label>Introduce un email: </label>
+        <input type="text" id="cajaEmail" />
+        <br/>
+        <button type="button" onclick="comprobarEmail()">
+            Comprobar email
+        </button>
+        <div id="result"></div>
+    </div>
+</body>
+</html>

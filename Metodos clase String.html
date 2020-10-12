@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Métodos para String</title>
+        <script type="text/javascript">
+            function ejecutarString() {
+                var texto = "VISUAL STUDIO.NET";
+                var html = "";
+                html += "length: " + texto.length + "<br/>";
+                html += "toLowerCase(): " + texto.toLowerCase() + "<br/>";
+                //cuando quieras trabajar con un único caracter se puede utilizar comillas simples
+                // en caso contrario comillas dobles
+                html += "indexOf('U'): " + texto.indexOf('U') + "<br/>";
+                html += "lastIndexOf('U'): " + texto.lastIndexOf('U') + "<br/>";
+                html += "charAt(9): " + texto.charAt(9) + "<br/>";
+                html += "substr(2,3): " + texto.substr(2, 3) + "<br/>";
+                html += "substring(2,3): " + texto.substring(2, 3) + "<br/>";
+                html += "startsWith('V'): " + texto.startsWith('V') + "<br/>";
+                html += "endsWith('T'): " + texto.endsWith('T') + "<br/>";
+                var div = document.getElementById("result");
+                div.innerHTML = html;
+            }
+        </script>
+    </head>
+    <body>
+        <!--
+            Con una cadena dada como "VISUAL STUDIO .NET"
+            hallar la longitud
+            mostrar la cadena en minúsculas
+            hallar la posición de la primera vocal 'U' en la cadena
+            hallar la posición de la última vocal 'U' en la cadena
+            mostrar el caracter de la posición 9 en la cadena
+            mostrar la cadena resultante desde la posicion 2, 3 caracteres
+            mostrar la cadena resultante utilizando como posición de inicio 2 y como posición final 3 sabiendo que la posición final no se incluye en el resultado
+            mostrar el primer caracter de la cadena
+            mostrar el último caracter de la cadena
+        -->
+        <div>
+            <h1>Métodos clase String</h1>
+            <h2 style="color:red">VISUAL STUDIO.NET</h2>
+            <button type="button" onclick="ejecutarString()">
+                Ejecutar
+            </button>
+            <div id="result"></div>
+        </div>
+    </body>
+</html>

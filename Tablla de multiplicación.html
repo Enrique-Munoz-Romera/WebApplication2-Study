@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Tabla de multiplicar</title>
+    <script type="text/javascript">
+        function ejecutarMultiplicacion() {
+            //recogemos las cajas necesarias y le damos valor
+            var cajanum1 = document.getElementById("cajanum1").value;
+            //recogemos el div
+            var div = document.getElementById("result");
+            //creamos la tabla mediante la concatenacion de la var html
+            //dado que es una lógica mas eficiente que ir creandola con
+            //.innerHTML
+            var html = "<table>";
+            html += "<tr><th>Operación</th>";
+            html += "<th>Resultado</th></tr>";
+            for (var i = 1; i <= 10; i++) {
+                html += "<tr><td>" + cajanum1 + "*" + i + "</td><td>" + (cajanum1 * i) + "</td></tr>";
+            }
+            html += "</table>";
+            div.innerHTML = html;
+        }
+    </script>
+</head>
+<body>
+    <!--Realizar una aplicación en la que introduciremos un número en una caja de texto y mostraremos
+    Su tabla de multiplicar (hasta 10) en formato tabla <table>-->
+    <div>
+        <h1>Tabla de multiplicar</h1>
+        <label>Introduzca un número: </label>
+        <input type="number" id="cajanum1" />
+        <br/>
+        <button type="button" onclick="ejecutarMultiplicacion()">
+            EJECUTAR
+        </button>
+        <div id="result"></div>
+    </div>
+</body>
+</html>

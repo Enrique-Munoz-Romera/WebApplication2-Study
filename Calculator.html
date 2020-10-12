@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Calculator</title>
+    <script>
+        //declaramnos las variables globales donde vamos a guardar los datos
+        var firstnumber;
+        var operation;
+        window.onload = function() {
+            var buttonnum = document.getElementsByName("button");
+            var buttonoperation = document.getElementsByName("buttonoperation");
+            var buttonequal = document.getElementById("buttonequal");
+             //RECORRER CADA UNO DE LOS BOTONES AGRUPADOS
+            //PARA QUE REALICEN LA MISMA OPERACION (EVENTO)
+            for (var button of buttonnum) {
+                    //evento al pulsar el boton
+                button.addEventListener("click", function () {
+                    var boxoperation = document.getElementById("boxoperation");
+                    boxoperation.value += this.innerText;
+                    console.log("this de primernumero" + this);
+                });
+            }
+
+            for (var buttonOperation of buttonoperation) {
+                //evento al pulsar el boton
+                buttonOperation.addEventListener("click", function () {
+                    var boxoperation = document.getElementById("boxoperation");
+                    firstnumber = parseInt(boxoperation.value);
+                    operation = this.innerText;
+                    console.log("this de operador" + this);
+                    boxoperation.value = "";
+                });
+            }
+
+            buttonequal.addEventListener("click", function () {
+                console.log("igual");
+                var boxoperation = document.getElementById("boxoperation");
+                var secondnum = parseInt(boxoperation.value);
+                var result = 0;
+                if (operation == "+") {
+                    result = firstnumber + secondnum;
+                } else if (operation == "-") {
+                    result = firstnumber - secondnum;
+                } else if (operation == "*") {
+                    console.log("multiplicacion");
+                    result = firstnumber * secondnum;
+                } else {
+                    result = firstnumber / secondnum
+                }
+
+                boxoperation.value = result
+            });
+
+            buttondelete.addEventListener("click", function () {
+                console.log("borrar");
+                var boxoperation = document.getElementById("boxoperation");
+                boxoperation.value ="";
+            });
+        }
+    </script>
+    <style>
+        .ac {
+            display:flex;
+            flex-flow:column;
+        }
+        #div.buttons {
+            display:flex;
+            flex-flow:row wrap;
+            font-weight:bold;
+            font-size:20px;
+            margin:0px;
+            padding:10px;
+            width:25px;
+            height:25px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="div">
+        <h1>Calculator</h1>
+        <input type="text" id="boxoperation" />
+        <br />
+        <button type="button" name="button" class="buttons">1</button>
+        <button type="button" name="button" class="buttons">2</button>
+        <button type="button" name="button" class="buttons">3</button>
+        <button type="button" name="button" class="buttons">4</button>
+        <br/>
+        <button type="button" name="button" class="buttons">5</button>
+        <button type="button" name="button" class="buttons">6</button>
+        <button type="button" name="button" class="buttons">7</button>
+        <button type="button" name="button" class="buttons">8</button>
+        <br/>
+        <button type="button" name="button" class="buttons">9</button>
+        <button type="button" name="button" class="buttons">0</button>
+        
+        <button type="button" name="buttonoperation" class="buttons">+</button>
+        <button type="button" name="buttonoperation" class="buttons">-</button>
+        <br/>
+        <button type="button" name="buttonoperation" class="buttons">*</button>
+        <button type="button" name="buttonoperation" class="buttons">/</button>
+        
+        <button type="button" id="buttonequal" class="buttons">=</button>
+        <button type="button" id="buttondelete" class="ac">AC</button>
+
+    </div>
+</body>
+</html>

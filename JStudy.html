@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JStudy</title>
+    <script type="text/javascript">
+        var cnt = 0;
+        window.onload = function () {
+            var body = document.getElementsByTagName("body");
+            var h1 = document.createElement("h1");
+            console.log("creamos el h1 ");
+            h1.innerHTML = "Recetas familiares";
+            h1.id = "titulo";
+            body[0].appendChild(h1);
+            var label = document.createElement("label");
+            console.log("creamos el label ");
+            label.innerText = "Selecciona tu plato por estación: ";
+            body[0].appendChild(label);
+            var seasons = ["Otoño", "Invierno", "Primavera", "Verano"];
+            var select = document.createElement("select");
+            console.log("creamos el select ");
+            for (var i = 0; i < seasons.length; i++) {
+                var options = document.createElement("option");
+                options.innerText = seasons[i];
+                options.value = seasons[i];
+                console.log("value of array: " + options.value);
+                select.appendChild(options);
+                //select.innerHTML = "<option value='" + seasons[i] + "'>" + seasons[i] + "</option>";
+                //<option value='otoño'> otoño <option>
+            }
+            body[0].appendChild(select);
+            select.addEventListener("change", function () {
+                var div = document.createElement("div");
+                div.id = "cajatitulo";
+                for (var j = 0; j < select.options.length; j++) {
+                    if (select.options[j].selected == true) {
+                        if (cnt == 0) {
+                            div.innerHTML = "<h1 class='titulo'>Recetas de " + select.options[j].value + "</h1>";
+                            body[0].appendChild(div);
+                            cnt++;
+                        } else {
+                            var caja = document.getElementById("cajatitulo");
+                            caja.innerText = "Recetas de " + select.options[j].value;
+
+                        }
+                    }
+                }
+
+                //var index = select.selectedIndex;
+                //console.log("Index of selected: " + index);
+                //var selected = select.options[index].value;
+                //console.log("Value of selected: " + selected);
+
+                //switch (selected){
+                //    case "Otoño":
+                //        div.innerHTML = "<h1 class='titulo'>Recetas de Otoño </h1>";
+                //        break;
+                //    case "Invierno":
+                //        div.innerHTML = "<h1>Recetas de Invierno</h1>";
+                //        break;
+                //    case "Primavera":
+                //        div.innerHTML = "<h1>Recetas de Primavera</h1>";
+                //        break;
+                //    case "Verano":
+                //        div.innerHTML = "<h1>Recetas de Verano</h1>";
+                //        break;
+                //    default:
+                //        break;
+                //}
+            });
+        }
+    </script>
+    <style>
+        #titulo {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight:300;
+            font-size:larger;
+            background-color:aquamarine;
+            text-align:center;
+            text-decoration-color: darkgray;
+        }
+
+        label {
+            
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>

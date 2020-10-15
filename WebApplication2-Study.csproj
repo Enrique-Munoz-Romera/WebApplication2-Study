@@ -72,6 +72,7 @@
     <Content Include="Calcular letra Dni.html" />
     <Content Include="CalcularCumpleaños.html" />
     <Content Include="Calculator.html" />
+    <Content Include="Calculatorjs.html" />
     <Content Include="clase Online.html" />
     <Content Include="Collatz.html" />
     <Content Include="EvaluaciónNumerica.html" />
@@ -83,6 +84,8 @@
     <Content Include="images\black-panther.jpg" />
     <Content Include="images\black-panther2.jpg" />
     <Content Include="images\S2.jpg" />
+    <Content Include="JStudy.html" />
+    <Content Include="JStudy2.html" />
     <Content Include="Metodos clase String.html" />
     <Content Include="Práctica ClaseOnline.html" />
     <Content Include="Prácticas de String.html" />

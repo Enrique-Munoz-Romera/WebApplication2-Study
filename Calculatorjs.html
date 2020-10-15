@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Calculator-emr</title>
+    <script>
+        var firstnum;
+        var operator;
+        window.onload = function () {
+            var body = document.getElementsByTagName("body");
+            var screen = document.createElement("div");
+            screen.id = "result";
+            body[0].appendChild(screen);
+            console.log("pantalla" + this);
+
+            for (var i = 0; i <= 9; i++) {
+                var button = document.createElement("button");
+                button.innerText = i.toString();
+                button.value = i;
+                for (var j = 0; j < body.length; j++) {
+                    body[j].appendChild(button);
+                }
+                button.addEventListener("click", function () {
+                    var num = parseInt(this.value);
+                    console.log("num: " +num + this);
+                    screen.innerText += num;
+                });
+            }
+
+            var operadores = ["+", "-", "*", "/"];
+            for (var l = 0; l < operadores.length; l++) {
+                var buttonOperator = document.createElement("button");
+                buttonOperator.innerText = operadores[l];
+                console.log("get operator: " + buttonOperator + this);
+                buttonOperator.value = operadores[l];
+                for (var m = 0; m < body.length; m++) {
+                    body[m].appendChild(buttonOperator);
+                }
+                buttonOperator.addEventListener("click", function () {
+                    firstnum = parseInt(document.getElementById("result").innerText);
+                    console.log("firstnum: " + firstnum);
+                    operator = this.value;
+                    console.log("operador: " + operator);
+                    screen.innerText = "";
+
+                });
+            }
+
+            var buttonEqual = document.createElement("button");
+            buttonEqual.innerText = "=";
+            buttonEqual.value = "=";
+            body[0].appendChild(buttonEqual);
+            buttonEqual.addEventListener("click", function () {
+                var secondnum = parseInt(document.getElementById("result").innerText);
+                console.log("Second num : " + secondnum + this);
+                switch (operator) {
+                    case "+":
+                        screen.innerText = parseInt(firstnum) + parseInt(secondnum);
+                        break;
+                    case "-":
+                        screen.innerText = parseInt(firstnum) - parseInt(secondnum);
+                        break;
+                    case "*":
+                        screen.innerText = parseInt(firstnum) * parseInt(secondnum);
+                        break;
+                    case "/":
+                        screen.innerText = parseInt(firstnum) / parseInt(secondnum);
+                        break;
+                    default:
+                        break;
+                }
+            });
+
+            var buttondelete = document.createElement("button");
+            buttondelete.innerText = "AC";
+            buttondelete.value = "ac";
+            body[0].appendChild(buttondelete);
+            buttondelete.addEventListener("click", function () {
+                console.log("ac" + this);
+                screen.innerText = "";
+            });
+           
+                       
+        }
+    </script>
+    <style>
+        body{
+            display:flex;
+            flex-flow: row wrap;
+            width:150px;
+        }
+
+        div{
+            width:150px;
+            height:50px;
+        }
+
+         body button{
+            /*display:flex;
+            flex-flow:row wrap;*/
+            width:35px;
+            height:25px;
+            margin:0px;
+            padding:10px;
+            text-align:center;
+
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
